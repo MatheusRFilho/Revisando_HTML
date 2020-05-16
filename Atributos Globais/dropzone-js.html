@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.quadrado{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+
+		.caixa{
+			width: 100px;
+			height: 100px;
+			background-color: aqua;
+		}
+	</style>
+</head>
+<body>
+	<div id="c2" class="caixa" draggable="true"></div>
+	<div id="c1" class="caixa" draggable="true"></div>
+
+	<div id="dropzone" class="quadrado" dropzone="copy"></div>
+
+	<script>
+		const caixas = document.querySelectorAll('.caixa');
+		const dropzone = document.getElementById('dropzone'); //Tomar cuidado com o query selector all por que ele retorna um array
+
+
+		//For each serve como um for pra todos os objetos da pagina
+		caixas.forEach(caixaEl => {
+			caixaEl.addEventListener('dragstart', e => {
+				e.dataTransfer.setData('Text', e.target.id);
+				console.log(e.target.id);
+			});
+		});
+
+		//evento pra cancelar o comportamento padrão do navegador
+
+		dropzone.addEventListener('dragover', e => {
+			e.preventDefault();
+		});
+
+		dropzone.addEventListener('drop', e => {
+				const id = e.dataTransfer.getData('Text');
+
+				const element = document.getElementById(id);
+
+				e.target.appendChild(element);
+			});
+
+
+			
+	</script>
+
+	<!-- local onde é aceitado as tags draggable
+		obs: Não funciona corretamente ainda 
+		obs 2: da pra fazer com um script
+	-->
+</body>
+</html>

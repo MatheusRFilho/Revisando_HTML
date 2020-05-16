@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li data-id="1" data-email="joaorangel@gmail.com">João Rangel</li>
+		<li data-id="2" data-email="glaucio@gmail.com">glaucio</li>
+	</ul>
+
+	<script>
+		document.querySelectorAll('li').forEach(liEl => {
+			console.log(liEl.dataset.email);
+		});
+	</script>
+
+	<!-- O atributo data guarda alguma informação pra usar essa informação é preciso de um script -->
+</body>
+</html>
